@@ -1,0 +1,36 @@
+﻿<Window x:Class="SchoolReport.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:SchoolReport"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="450" Width="800">
+    <Grid>
+        <ListView d:ItemsSource="{d:SampleData ItemCount=5}" SelectedItem="{Binding SelectedStudent}" ItemsSource="{Binding students}" Margin="10,56,0,93" Height="NaN" Width="343" HorizontalAlignment="Left">
+            <ListView.View>
+                <GridView>
+                    <GridViewColumn Header="Name" Width="Auto" DisplayMemberBinding="{Binding Name}"/>
+                    <GridViewColumn Header="Email" Width="Auto" DisplayMemberBinding="{Binding Email}" />
+                </GridView>
+            </ListView.View>
+        </ListView>
+        <Label Content="School Reports" Margin="353,13,353,0" VerticalAlignment="Top" Width="NaN"/>
+        <Button Command="{Binding AddStudent}" Content="Add Student" HorizontalAlignment="Left" Margin="10,362,0,0" VerticalAlignment="Top" Click="Button_Click" Height="26" Width="100"/>
+        <Button Command="{Binding EditStudent}" Content="Edit Student" HorizontalAlignment="Left" Margin="128,362,0,0" VerticalAlignment="Top" Click="Button_Click" Height="26" Width="100"/>
+        <Button Command="{Binding RemoveStudent}" Content="Remove Student" HorizontalAlignment="Left" Margin="253,362,0,0" VerticalAlignment="Top" Click="Button_Click" Height="26" Width="100"/>
+        <Button Command="{Binding AddDiscipline}" Content="Add Discipline" HorizontalAlignment="Left" Margin="410,362,0,0" VerticalAlignment="Top" Click="Button_Click" Height="26" Width="100" RenderTransformOrigin="0.2,-0.114"/>
+        <Button Command="{Binding EditDiscipline}" Content="Edit Discipline" HorizontalAlignment="Left" Margin="541,362,0,0" VerticalAlignment="Top" Click="Button_Click" Height="26" Width="100" RenderTransformOrigin="0.2,-0.114"/>
+        <Button Command="{Binding RemoveDiscipline}" Content="Remove Discipline" HorizontalAlignment="Left" Margin="673,362,0,0" VerticalAlignment="Top" Click="Button_Click" Height="26" Width="100" RenderTransformOrigin="0.2,-0.114"/>
+        <Label Content="Students" Margin="100,25,643,0" VerticalAlignment="Top" Width="NaN"/>
+        <ListView d:ItemsSource="{d:SampleData ItemCount=5}" SelectedItem="{Binding SelectedDiscipline}" ItemsSource="{Binding SelectedStudent.Disciplines}" Margin="410,56,0,93" Height="NaN" Width="368" HorizontalAlignment="Left">
+            <ListView.View>
+                <GridView>
+                    <GridViewColumn Header="Name" Width="Auto" DisplayMemberBinding="{Binding Name}"/>
+                    <GridViewColumn Header="Grades" Width="Auto" DisplayMemberBinding="{Binding Grade}"/>
+                </GridView>
+            </ListView.View>
+        </ListView>
+        <Label Content="Students" Margin="562,25,180,0" VerticalAlignment="Top" Width="NaN"/>
+    </Grid>
+</Window>
